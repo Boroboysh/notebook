@@ -2,9 +2,9 @@
 
 
 
----
+***
 
-###`GET /api/v1/notebook/`
+### `GET /api/v1/notebook/`
 _- Получение всех записей_.
 
 **Query parameters:**
