@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EntryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1/notebook')->group(function () {
+    // Получение всех записей
+    Route::get('/', [EntryController::class, 'getAllEntries']);
+    // Получение записи по айди
+    Route::get('/{id}', [EntryController::class, 'getEntryById']);
+    // Создание новой записи
+    Route::post('/', [EntryController::class, 'newEntry']);
+    // Редактирование записи по айди
+    Route::post('/{id}', [EntryController::class, 'updateEntryById']);
+    // Удаление записи по айди
+    Route::delete('/{id}', [EntryController::class, 'deleteEntryById']);
 });
